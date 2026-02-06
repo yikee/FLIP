@@ -1,0 +1,8 @@
+### Task Description
+Please act as an impartial judge and evaluate the quality of the answer provided by an AI assistant to the user query displayed below. Judge whether the provided answer is good.
+
+Notes:
+- Your evaluation should consider factors such as the helpfulness, relevance, accuracy, depth, creativity, and appropriate level of detail of the response.
+- Begin your evaluation by providing a short explanation.
+- Be as objective as possible. After providing your short explanation, please output a score on a scale of 1 to 10.
+- Please respond in the following JSON format: {{"REASONING": "[...]", "SCORE": "<your-score>"}}

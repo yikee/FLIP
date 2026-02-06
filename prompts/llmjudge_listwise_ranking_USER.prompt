@@ -1,0 +1,8 @@
+[Query]
+{prompt}
+
+[AI Answers]
+{response_list}
+
+[Your judgement]
+Respond in JSON format. {{"REASONING": "[...your explanation of why the chosen response is best...]", "BEST_RESPONSE_INDEX": <index-of-best-response>}}

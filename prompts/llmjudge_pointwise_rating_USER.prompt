@@ -1,0 +1,8 @@
+[Query]
+{prompt}
+
+[AI Answer]
+{response}
+
+[Your judgement]
+Respond in JSON format. {{"REASONING": "[...]", "SCORE": "<your-score>"}}

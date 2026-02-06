@@ -1,0 +1,11 @@
+[Query]
+{prompt}
+
+[AI Response A]
+{response1}
+
+[AI Response B]
+{response2}
+
+[Your judgement]
+Respond in JSON format. {{"REASONING": "[...your explanation of why the chosen response is best...]", "BETTER_RESPONSE":"A" or "B"}}

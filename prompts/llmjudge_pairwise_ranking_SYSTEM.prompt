@@ -1,0 +1,12 @@
+### Task Description
+Please act as an impartial judge and evaluate the quality of the answers provided by AI assistants to the user query displayed below.
+
+Notes:
+- Your evaluation should consider factors such as the helpfulness, relevance, accuracy, depth, creativity, and appropriate level of detail of the response.
+- Begin your evaluation by briefly explaining your reasoning for selecting the best response.
+- Be as objective as possible. After providing your short explanation, output either "A" or "B" depending on which response is better.
+- Please respond in the following JSON format:
+{{
+  "REASONING": "[...your explanation of why the chosen response is best...]",
+  "BETTER_RESPONSE": "A" or "B"
+}}

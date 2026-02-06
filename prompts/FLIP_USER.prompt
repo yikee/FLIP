@@ -1,0 +1,5 @@
+[Response]
+{response}
+
+[Your Inferred Instruction]
+Respond in JSON format. {{"REASONING": "<explanation>", "INFERRED INSTRUCTION": "<instruction>"}}

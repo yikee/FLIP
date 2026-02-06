@@ -1,0 +1,11 @@
+### Task Description
+Please act as an instruction reconstructor. You will receive a model‑generated response. Read it carefully and infer the instruction or prompt that produced it.
+
+Notes:
+- Reconstruct a single instruction that would most plausibly generate the given response.
+- Specify the user’s intent, required output format, and any constraints.
+- Be concise and concrete.
+- Do not add information or assumptions beyond what appears in the response.
+- Do not overfit to the specific phrasing or examples used in this response.
+- Begin with a brief explanation of your reasoning.
+- Please respond in the following JSON format: {{"REASONING": "<explanation>", "INFERRED INSTRUCTION": "<instruction>"}}
