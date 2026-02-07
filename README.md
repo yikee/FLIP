@@ -18,8 +18,8 @@ FLIP uses **backward inference** for reward modeling: given a model response, an
 
 | Path | Description |
 |------|-------------|
-| **`metrics.py`** | F1 score and normalization utilities for comparing inferred vs. ground-truth instructions. |
 | **`prompts/`** | Prompt templates: FLIP (instruction inference) and LLM-judge baselines (pointwise, pairwise, listwise). |
+| **`metrics.py`** | F1 score and normalization utilities for comparing inferred vs. ground-truth instructions. |
 | **`open-instruct/`** | [Open Instruct](https://github.com/allenai/open-instruct) fork with FLIP integrated as a GRPO reward (judge type `flip`). |
 
 ---
