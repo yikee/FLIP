@@ -10,9 +10,9 @@
 
 <img width="1680" height="458" alt="overview" src="https://github.com/user-attachments/assets/86910cfe-2516-4ca8-be3b-081dfdaa8e86" />
 
+
 FLIP uses **backward inference** for reward modeling: given a model response, an LLM infers the instruction that would most plausibly have produced it; the reward is the **F1 score** between the inferred instruction and the original instruction.
 
----
 
 ## Repository structure
 
@@ -24,7 +24,6 @@ FLIP uses **backward inference** for reward modeling: given a model response, an
 
 ---
 
-## How to use the code
 
 ### 1. Using the FLIP reward (standalone)
 
@@ -37,16 +36,13 @@ FLIP uses **backward inference** for reward modeling: given a model response, an
 
 **Step 2 — Compute reward with F1**
 
-- In Python:
-  ```python
-  from metrics import f1_score
+```python
+from metrics import f1_score
 
-  # prediction = inferred instruction from the LLM
-  # ground_truth = original instruction
-  result = f1_score(prediction, ground_truth)
-  # result["f1"], result["precision"], result["recall"]
-  ```
-- Use **`result["f1"]`** as the FLIP reward (e.g. in the range [0, 1]).
+# prediction = inferred instruction from the LLM
+# ground_truth = original instruction
+result = f1_score(prediction, ground_truth)["f1"]
+```
 
 `metrics.py` also provides **`normalize_answer(s)`** for normalizing text before comparison (lowercasing, removing punctuation/articles, fixing whitespace).
 
@@ -55,13 +51,6 @@ FLIP uses **backward inference** for reward modeling: given a model response, an
 ### 2. RL training with GRPO (FLIP as reward)
 
 Training runs use the **Open Instruct** codebase under **`open-instruct/`**, with FLIP wired in as the judge type **`flip`**.
-
-**Requirements**
-
-- A dataset in the RLVR-style format expected by Open Instruct, with:
-  - **Conversation**: `messages` (list of `{role, content}`), e.g. `user` / `assistant`.
-  - **Ground truth**: the **original instruction** (the one that should be inferred from the response). For FLIP, this is typically the last user instruction; it is used as the reference when computing F1.
-  - **Verifier key**: a field (e.g. `dataset`) whose value identifies the reward function. For FLIP this must map to the **`flip`** verifier (e.g. **`general-flip`** in the code).
 
 **Example dataset**
 
@@ -80,21 +69,11 @@ Training runs use the **Open Instruct** codebase under **`open-instruct/`**, wit
 
 **Important script variables (in the `.sh` scripts)**
 
-- **`DATASETS`** — Training mix, e.g. `"yikeee/rlvr_general_chat_flip 1.0"`. Change to your dataset and weight.
-- **`LOCAL_EVALS`** — Eval dataset and size, e.g. `"yikeee/rlvr_general_chat_flip 8"`.
+- **`DATASETS`** — Training mix, e.g. `"yikeee/rlvr_general_chat_flip 1.0"`. 
 - **`MODEL_NAME_OR_PATH`** — Policy model (e.g. `allenai/Olmo-3-7B-Think-DPO`).
 - **`--llm_judge_model`** — Judge model used for FLIP (infer instruction) or LLM-judge (e.g. `hosted_vllm/Qwen/Qwen3-4B`).
-- **`JUDGE_BASE_URL`**, **`BEAKER_IMAGE`**, **cluster**, **`mason.py`** — The example scripts are set up for Beaker/mason; adjust or replace these for your cluster or local runs.
 
 Inside Open Instruct, the FLIP pipeline uses the same idea as the standalone use: the judge model is prompted to infer the instruction from the response, then **`f1_score(inferred_instruction, ground_truth)`** (in `open-instruct/open_instruct/judge_utils.py` and `ground_truth_utils.py`) gives the reward.
-
----
-
-## Prompts reference
-
-- **FLIP**: `prompts/FLIP_SYSTEM.prompt`, `prompts/FLIP_USER.prompt` — instruction reconstruction and JSON output.
-- **LLM judge (pointwise)**: `prompts/llmjudge_pointwise_rating_*.prompt` — rate response quality (e.g. 1–10).
-- **LLM judge (pairwise/listwise)**: `prompts/llmjudge_pairwise_ranking_*.prompt`, `prompts/llmjudge_listwise_ranking_*.prompt` — ranking-based judging.
 
 ---
 
