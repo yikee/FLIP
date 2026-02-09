@@ -52,9 +52,13 @@ result = f1_score(prediction, ground_truth)["f1"]
 
 Training runs use the **Open Instruct** codebase under **`open-instruct/`**, with FLIP wired in as the judge type **`flip`**.
 
-**Example dataset**
+**Example datasets**
 
-- **`yikeee/rlvr_general_chat_flip`** on Hugging Face: [https://huggingface.co/datasets/yikeee/rlvr_general_chat_flip](https://huggingface.co/datasets/yikeee/rlvr_general_chat_flip). You can use it as-is or adapt your own data to the same schema.
+- **FLIP:** [`yikeee/rlvr_general_chat_flip`](https://huggingface.co/datasets/yikeee/rlvr_general_chat_flip)  
+- **LLM Judge:** [`yikeee/rlvr_general_chat`](https://huggingface.co/datasets/yikeee/rlvr_general_chat)
+
+You can use these datasets as-is, or adapt your own data to match the same schema.  
+Both datasets share the same structure and content, differing only in the judge type specified by the `"dataset"` attribute.
 
 **Running training**
 
