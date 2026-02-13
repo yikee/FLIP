@@ -1,4 +1,4 @@
-# 🔄 FLIP: Backward Inference for Generative Reward Modeling in Downscaled Regimes
+# Small Reward Models via Backward Inference
 
 <div align="center">
   <b>Yike Wang<sup>1</sup>, Faeze Brahman<sup>2</sup>, Shangbin Feng<sup>1</sup>, Teng Xiao<sup>2</sup>, Hannaneh Hajishirzi<sup>1</sup><sup>2</sup>, Yulia Tsvetkov<sup>1</sup></b>
@@ -10,8 +10,9 @@
 
 <img width="1680" height="458" alt="overview" src="https://github.com/user-attachments/assets/86910cfe-2516-4ca8-be3b-081dfdaa8e86" />
 
+---
 
-FLIP uses **backward inference** for reward modeling: given a model response, an LLM infers the instruction that would most plausibly have produced it; the reward is the **F1 score** between the inferred instruction and the original instruction.
+We propose 🔄 **FLIP**, a reference-free and rubric-free reward modeling approach: infer the instruction that would most plausibly produce a given response, and use the similarity between the inferred and the original instructions as the reward signal.
 
 
 ## Repository structure
@@ -57,8 +58,9 @@ Training runs use the **Open Instruct** codebase under **`open-instruct/`**, wit
 - **FLIP:** [`yikeee/rlvr_general_chat_flip`](https://huggingface.co/datasets/yikeee/rlvr_general_chat_flip)  
 - **LLM Judge:** [`yikeee/rlvr_general_chat`](https://huggingface.co/datasets/yikeee/rlvr_general_chat)
 
+
+Both datasets share the same structure and content, consisting of 12k English prompts from the WildChat dataset. They only differ in the judge type specified by the `"dataset"` attribute.
 You can use these datasets as-is, or adapt your own data to match the same schema.  
-Both datasets share the same structure and content, differing only in the judge type specified by the `"dataset"` attribute.
 
 **Running training**
 
