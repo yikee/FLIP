@@ -92,3 +92,10 @@ If you have any questions or comments about our paper, or notice any issues in t
 ## Citing
 
 If you found this work helpful, please consider starring this repository and citing our paper as shown below:
+```latex
+@article{wang2026small,
+  title={Small Reward Models via Backward Inference},
+  author={Wang, Yike and Brahman, Faeze and Feng, Shangbin and Xiao, Teng and Hajishirzi, Hannaneh and Tsvetkov, Yulia},
+  journal={arXiv preprint arXiv:2602.13551},
+  year={2026}
+}
