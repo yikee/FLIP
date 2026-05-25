@@ -67,7 +67,7 @@ You can use these datasets as-is, or adapt your own data to match the same schem
 
 **Important script variables (in the `.sh` scripts)**
 
-- **`DATASETS`** — Training mix, e.g. `"yikeee/rlvr_general_chat_flip 1.0"`. 
+- **`DATASETS`** — Training mix. 
 - **`MODEL_NAME_OR_PATH`** — Policy model (e.g. `allenai/Olmo-3-7B-Think-DPO`).
 - **`--llm_judge_model`** — Judge model used for FLIP (infer instruction) or LLM-judge (e.g. `hosted_vllm/Qwen/Qwen3-4B`).
 
