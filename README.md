@@ -1,13 +1,5 @@
 # Small Reward Models via Backward Inference
 
-<div align="center">
-  <b>Yike Wang<sup>1</sup>, Faeze Brahman<sup>2</sup>, Shangbin Feng<sup>1</sup>, Teng Xiao<sup>2</sup>, Hannaneh Hajishirzi<sup>1</sup><sup>2</sup>, Yulia Tsvetkov<sup>1</sup></b>
-  <br>
-  <sup>1</sup>University of Washington, <sup>2</sup>Allen Institute for Artificial Intelligence
-  <br><br>
-  <!-- <a href="https://www.arxiv.org/abs/?"><img src="https://img.shields.io/badge/Paper-arXiv-orange"></a> -->
-</div>
-
 <img width="1680" height="458" alt="overview" src="https://github.com/user-attachments/assets/86910cfe-2516-4ca8-be3b-081dfdaa8e86" />
 
 ---
@@ -55,8 +47,8 @@ Training runs use the **Open Instruct** codebase under **`open-instruct/`**, wit
 
 **Example datasets**
 
-- **FLIP:** [`yikeee/rlvr_general_chat_flip`](https://huggingface.co/datasets/yikeee/rlvr_general_chat_flip)  
-- **LLM Judge:** [`yikeee/rlvr_general_chat`](https://huggingface.co/datasets/yikeee/rlvr_general_chat)
+- **FLIP:**
+- **LLM Judge:**
 
 
 Both datasets share the same structure and content, consisting of 12k English prompts from the WildChat dataset. They only differ in the judge type specified by the `"dataset"` attribute.
@@ -80,22 +72,3 @@ You can use these datasets as-is, or adapt your own data to match the same schem
 - **`--llm_judge_model`** — Judge model used for FLIP (infer instruction) or LLM-judge (e.g. `hosted_vllm/Qwen/Qwen3-4B`).
 
 Inside Open Instruct, the FLIP pipeline uses the same idea as the standalone use: the judge model is prompted to infer the instruction from the response, then **`f1_score(inferred_instruction, ground_truth)`** (in `open-instruct/open_instruct/judge_utils.py` and `ground_truth_utils.py`) gives the reward.
-
----
-
-## Questions
-
-If you have any questions or comments about our paper, or notice any issues in the code, feel free to reach out at **yikewang@cs.washington.edu**. We will do our best to respond within one business day.
-
----
-
-## Citing
-
-If you found this work helpful, please consider starring this repository and citing our paper as shown below:
-```latex
-@article{wang2026small,
-  title={Small Reward Models via Backward Inference},
-  author={Wang, Yike and Brahman, Faeze and Feng, Shangbin and Xiao, Teng and Hajishirzi, Hannaneh and Tsvetkov, Yulia},
-  journal={arXiv preprint arXiv:2602.13551},
-  year={2026}
-}
